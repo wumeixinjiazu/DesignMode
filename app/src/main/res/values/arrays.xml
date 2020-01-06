@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="spinner_cal_way">
+        <item>正常计价</item>
+        <item>打八折</item>
+        <item>满300送100</item>
+    </string-array>
+</resources>
