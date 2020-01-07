@@ -17,7 +17,7 @@ import com.example.designmode.R;
 /**
  * @author[wengCJ]
  * @version[创建日期，2020/1/6 0006]
- * @function[功能简介 商场促销，简单工厂模式]
+ * @function[功能简介 商场促销，简单工厂模式和策略模式的应用]
  **/
 public class TwoActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -79,10 +79,18 @@ public class TwoActivity extends AppCompatActivity implements View.OnClickListen
                 int goodNumber = Integer.parseInt(etNumber.getText().toString().trim());
 
                 totalPrice += goodPrice * goodNumber;
-                //根据下拉框选取计价模式
-                CashSuper acceptCash = CashFactory.createAcceptCash(curCashWay);
+
+                //根据下拉框选取计价模式 下面是策略模式 跟 简单工厂模式的结合
+                CashContext cashContext = new CashContext(curCashWay);
                 //获取最后收取的金额
-                double lastAcceptCash = acceptCash.acceptCash(totalPrice);
+                double lastAcceptCash = cashContext.GetResult(totalPrice);
+
+                //下面是简单工厂模式
+//                CashSuper cashSuper = CashFactory.createAcceptCash(curCashWay);
+//                cashSuper.acceptCash(totalPrice);
+
+                //区别：简单工厂模式：客户端需要认识两个类  而策略模式 客户端只需要认识一个类 耦合降低
+
                 tvBuyRecord.append("单价：" + goodPrice + " 数量：" + goodNumber + " 总价：" + lastAcceptCash + "\n");
                 tvTotal.setText("总价为：" + lastAcceptCash);
                 break;

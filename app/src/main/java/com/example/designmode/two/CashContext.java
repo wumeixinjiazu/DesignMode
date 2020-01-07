@@ -2,13 +2,14 @@ package com.example.designmode.two;
 
 /**
  * @author[wengCJ]
- * @version[创建日期，2020/1/6 0006]
- * @function[功能简介 现金类的工厂模式]
+ * @version[创建日期，2020/1/7 0007]
+ * @function[功能简介 现金类的策略模式和简单工厂模式的结合]
  **/
-public class CashFactory {
+public class CashContext {
 
-    public static CashSuper createAcceptCash(String type){
-        CashSuper cashSuper = null;
+    public CashSuper cashSuper;
+
+    public CashContext(String type) {
         switch (type){
             case "正常计价":
                 cashSuper = new CashNormal();
@@ -19,9 +20,13 @@ public class CashFactory {
             case "满300送100":
                 cashSuper = new CashReturn(300,100);
                 break;
+            default:
+                break;
         }
-        return cashSuper;
     }
 
+    public double GetResult(double money) {
+        return cashSuper.acceptCash(money);
+    }
 
 }
