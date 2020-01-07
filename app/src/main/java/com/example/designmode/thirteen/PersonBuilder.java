@@ -16,8 +16,17 @@ import androidx.annotation.Nullable;
  * @version[创建日期，2020/1/7 0007]
  * @function[功能简介]
  **/
-public class PersonBuilder extends View {
-    private Paint mPaint = new Paint();
+public abstract class PersonBuilder extends View {
+
+    protected Paint mPaint = new Paint();
+
+    //绘制一个人所需要的方法 头 身子 左右手 左右脚
+//    protected abstract void buildHead();
+//    protected abstract void buildBody();
+//    protected abstract void buildArmLeft();
+//    protected abstract void buildArmRight();
+//    protected abstract void buildLegLeft();
+//    protected abstract void buildLegRight();
 
 
     public PersonBuilder(Context context) {
@@ -44,9 +53,6 @@ public class PersonBuilder extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawLine(20,20,200,200,mPaint);
-        RectF rect = new RectF(200,200,400,400);
-        canvas.drawRoundRect(rect,0.5f, 0.5f,mPaint);
-
+//        canvas.drawCircle(200f,200f,200,mPaint);
     }
 }
